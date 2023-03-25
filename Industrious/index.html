@@ -13,7 +13,7 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
-	<body class="is-preload">
+	<body class="is-preload" onmousemove="posicion(event);">
 
 		<!-- Header -->
 			<header id="header">
@@ -29,17 +29,17 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="index.html">Inici</a></li>
-					<li><a href="#desc">Descripció</a></li>
-					<li><a href="#normes">Normes</a></li>
-					<li><a href="#parking">Pàrkings</a></li>
+					<li><a href=#banner>Inici</a></li>
+					<li><a href=#Bicicleta>Descripció</a></li>
+					<li><a href="generic.html">Normes</a></li>
+					<li><a href="generic.html">Pàrkings</a></li>
 				</ul>
 			</nav>
 
 		<!-- Banner -->
 			<section id="banner">
 				<div class="inner">
-					<h1>BICING LLEIDA</h1>
+					<h1>BICING LLEIDA 2</h1>
 					<p>Un servei per a la ciutadania, ofert per la ciutat de Lleida disenyat per JJ & D sota llicencia de Luxesoft</p>
 				</div>
 				<video autoplay loop muted playsinline src="images/banner.mp4"></video>
@@ -86,7 +86,10 @@
 			</section>
 
 		<!-- CTA -->
-		
+			<section id="bicicleta" class="wrapper">
+				<script src="./codi.js"></script>
+			</section>
+
 
 
 			<section id="normes" class="wrapper">
@@ -189,18 +192,8 @@
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
+			<script src="assets/js/bike.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script>
-				var imagen = document.getElementById('fotocompass');
-			
-				window.addEventListener('mousemove', function(event) {
-				  var x = event.clientX - imagen.offsetLeft - imagen.offsetWidth/2;
-				  var y = event.clientY - imagen.offsetTop - imagen.offsetHeight/2;
-			
-				  var angulo = Math.atan2(y, x) * 180 / Math.PI;
-				  imagen.style.transform = 'rotate(' + angulo + 'deg)';
-				});
-			  </script>
 
 	</body>
 </html>

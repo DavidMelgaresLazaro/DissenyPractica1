@@ -44,22 +44,3 @@
 
 })(jQuery);
 
-function moure(evento, element) {
-    var pos = 0;
-    var posxbike = evento.clientX;
-    var bike = document.querySelector(element);
-    var pos = bike.getBoundingClientRect();
-
-    var posxbike= pos.left + pos.width / 2;
-
-
-
-
-    bike.style.transform = 'rotate(' + graus + 'deg)';
-}
-
-function position(event) {
-
-    moure(event, ".bike");
-
-}
