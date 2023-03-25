@@ -2822,12 +2822,12 @@ body.is-menu-visible #menu {
   visibility: visible; }
 
 
-  .center-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 #bici{
   position:absolute;
 }
