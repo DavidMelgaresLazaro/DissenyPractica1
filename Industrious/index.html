@@ -30,9 +30,9 @@
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="index.html">Inici</a></li>
-					<li><a href="elements.html">Descripció</a></li>
-					<li><a href="generic.html">Normes</a></li>
-					<li><a href="generic.html">Pàrkings</a></li>
+					<li><a href="#desc">Descripció</a></li>
+					<li><a href="#normes">Normes</a></li>
+					<li><a href="#parking">Pàrkings</a></li>
 				</ul>
 			</nav>
 
@@ -46,7 +46,7 @@
 			</section>
 
 		<!-- Highlights -->
-			<section class="wrapper">
+			<section class="wrapper" id="desc">
 				<div class="inner">
 					<header class="special">
 						<h2>FES SALUT I AJUDA AL PLANETA</h2>
@@ -86,12 +86,10 @@
 			</section>
 
 		<!-- CTA -->
-			<section id="bicicleta" class="wrapper">
-				<script src="./codi.js"></script>
-			</section>
+		
 
 
-			<section id="cta" class="wrapper">
+			<section id="normes" class="wrapper">
 				<div class="inner">
 					<h2>NORMES DE UTILITZACIÓ DEL SERVEI</h2>
 					<p>A la ciutat de Lleida disposes de diverses pàrkings del servei de bicing. Recorda que mentre fas us de la bicicleta, TU ets el resposable de tenir cura de la mateixa. Cal que una vegada acabis de fer servir la bicicleta, la retornis a uns dels pàrkings distribuits per la ciutat. </p>
@@ -100,12 +98,15 @@
 			</section>
 
 		<!-- Testimonials -->
-			<section class="wrapper">
+			<section class="wrapper" id="parking">
 				<div class="inner">
 					<header class="special">
-						<h2>Faucibus consequat lorem</h2>
+						<h2>Pàrkings</h2>
 						<p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor.</p>
 					</header>
+					<div class="center-screen">
+						<img src="images/compass.png" height="100px" width="100px" id="fotocompass"/>
+					</div>
 					<div class="testimonials">
 						<section>
 							<div class="content">
@@ -114,7 +115,7 @@
 								</blockquote>
 								<div class="author">
 									<div class="image">
-										<img src="images/pic01.jpg" alt="" />
+										<img src="images/pic01.jpg" alt=""/>
 									</div>
 									<p class="credit">- <strong>Jane Doe</strong> <span>CEO - ABC Inc.</span></p>
 								</div>
@@ -189,6 +190,17 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				var imagen = document.getElementById('fotocompass');
+			
+				window.addEventListener('mousemove', function(event) {
+				  var x = event.clientX - imagen.offsetLeft - imagen.offsetWidth/2;
+				  var y = event.clientY - imagen.offsetTop - imagen.offsetHeight/2;
+			
+				  var angulo = Math.atan2(y, x) * 180 / Math.PI;
+				  imagen.style.transform = 'rotate(' + angulo + 'deg)';
+				});
+			  </script>
 
 	</body>
 </html>
