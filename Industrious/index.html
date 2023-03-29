@@ -31,7 +31,7 @@
 				<ul class="links">
 					<li><a href=#banner>Inici</a></li>
 					<li><a href="#desc">Descripció</a></li>
-					<li><a href="#normes">Normes</a></li>
+					<li><a href="#cta">Normes</a></li>
 					<li><a href="#parking">Pàrkings</a></li>
 				</ul>
 			</nav>
@@ -86,11 +86,11 @@
 			</section>
 
 		<!-- CTA -->
-			<section  class="wrapper">
 			<div class="bicicleta">
-			<img src="images/pngwing.com.png" height="50px" id="bici">
+				<img src="images/pngwing.com.png" height="50px" id="bici">
 			</div>
-			<section id="normes" class="wrapper">
+			<section  class="wrapper">
+			<section id="cta" class="wrapper">
 				<div class="inner">
 					<h2>NORMES DE UTILITZACIÓ DEL SERVEI</h2>
 					<p>A la ciutat de Lleida disposes de diverses pàrkings del servei de bicing. Recorda que mentre fas us de la bicicleta, TU ets el resposable de tenir cura de la mateixa. Cal que una vegada acabis de fer servir la bicicleta, la retornis a uns dels pàrkings distribuits per la ciutat. </p>
@@ -107,6 +107,17 @@
 					</header>
 					<div class="center-screen">
 						<img src="images/compass.png" height="100px" width="100px" id="fotocompass"/>
+						<script>
+							var imagen = document.getElementById('fotocompass');
+						
+							window.addEventListener('mousemove', function(event) {
+							  var x = event.clientX - imagen.offsetLeft - imagen.offsetWidth/2;
+							  var y = event.clientY - imagen.offsetTop - imagen.offsetHeight/2;
+						
+							  var angulo = Math.atan2(y, x) * 180 / Math.PI;
+							  imagen.style.transform = 'rotate(' + angulo + 'deg)';
+							});
+						</script>
 					</div>
 					<div class="testimonials">
 						<section>
@@ -192,6 +203,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/bike.js"></script>
 			<script src="assets/js/main.js"></script>
+		
 
 	</body>
 </html>
