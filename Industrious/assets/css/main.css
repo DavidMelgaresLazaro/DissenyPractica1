@@ -2827,33 +2827,146 @@ body.is-menu-visible #menu {
   justify-content: center;
   align-items: center;
   text-align: center;
+
+
 }
 
 
-#bici{
-  position:absolute;
-  transform: scale(1, 1);
-  transition: transform 0.5s linear;
+
+#bici {
+  
+  position: absolute; /* o relative, según la estructura del documento */
+  left: 0; /* o cualquier otra posición inicial */
+  
+  transition: transform 0.6s ease-in-out;
+
 }
-
-
-.container {
+.bici {
   position: relative;
-  width: 1000px;
-  height: 1000px;
+  width: 100%;
+  background-color: rgba(255, 0, 0, 0.3);
+  padding: 50px;
 }
-.img1, .img2 {
-  position: absolute;
-  object-fit: cover;
+
+
+/*image1*/
+.image1 {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
 }
-.img2 {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+
+.image1 img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: filter 0.3s ease;
 }
-.crossfade {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+
+.image1:hover img {
+  filter: blur(3px);
+}
+
+/*image2*/
+.image2 {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.image2 img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: filter 0.3s ease;
+}
+
+.image2:hover img {
+  border-radius:50%;
+  -webkit-border-radius:50%;
+  box-shadow: 0px 0px 15px 15px #ec731e;
+  -webkit-box-shadow: 0px 0px 15px 15px #ec731e;  
+}
+
+
+/*image3*/
+.image3 {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.image3 img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: filter 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.image3:hover img {
+  transform: rotateY(180deg); 
 }
 
 
 
+
+/*image4*/
+.image4 {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.image4 img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: filter 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.image4:hover img {
+  opacity: 0.5;
+}
+
+
+
+
+/*image5*/
+.image5 {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.image5 img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.image5:hover img {
+  transform: rotate(360deg);
+}
+
+
+
+/*image6*/
+.image5 {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.image6 img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.image6:hover img {
+  filter: grayscale(80%);
+}
