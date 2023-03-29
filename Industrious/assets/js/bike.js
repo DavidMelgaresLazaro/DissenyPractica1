@@ -33,25 +33,3 @@ function moure() {
 
 init();
 
-
-
-// init();
-// function moure() {
-//     var pos = bike.getBoundingClientRect();
-//     var posxbike = pos.left + pos.width / 2;
-//     bike.style.left = posx + 'px';
-// }
-
-
-// function rotate_Bike() {
-//     const posx = event.clientX;
-//     if (prev_posx > posx && !isFlipped) {
-//       bici.style.transform = 'scale(-1, 1)';
-//       isFlipped = true;
-//     } else if (prev_posx <= posx && isFlipped) {
-//       bici.style.transform = 'scale(1, 1)';
-//       isFlipped = false;
-//     }
-//     prev_posx = posx;
-//   }
-
