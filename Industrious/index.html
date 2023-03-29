@@ -106,25 +106,69 @@
 
 		<!-- Testimonials -->
 			<section class="wrapper" id="parking">
-				<div class="inner">
+				<div class="inner" id="mirar">
 					<header class="special">
-						<h2>Pàrkings</h2>
-						<p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor.</p>
+						<h2>Pàrquings</h2>
+						<p>Actualment tens aquests pàrquings disponibles. Properament s'ampliara el número per arribar a tot el poble.</p>
 					</header>
 					<div class="center-screen">
-						<img src="images/compass.png" height="100px" width="100px" id="fotocompass"/>
-						<script>
-							var imagen = document.getElementById('fotocompass');
-						
-							window.addEventListener('mousemove', function(event) {
-							  var x = event.clientX - imagen.offsetLeft - imagen.offsetWidth/2;
-							  var y = event.clientY - imagen.offsetTop - imagen.offsetHeight/2;
-						
-							  var angulo = Math.atan2(y, x) * 180 / Math.PI;
-							  imagen.style.transform = 'rotate(' + angulo + 'deg)';
+						<div class="container">
+							<img class="img1" src="images/mapabuit.png">
+							<img class="img2" src="images/mapaparquings.png">
+							<img class="crossfade" src="images/mapaparquings.png">
+						  </div>
+						  
+						  <!-- JavaScript code -->
+						  <script>
+							const container = document.querySelector('.container');
+							const img1 = container.querySelector('.img1');
+							const img2 = container.querySelector('.img2');
+							const crossfade = container.querySelector('.crossfade');
+							const originalSrc = crossfade.src;
+							const newSrc = 'images/mapaparquings.';
+						  
+							container.addEventListener('mouseenter', function() {
+							  img1.style.opacity = 0;
+							  img2.style.opacity = 1;
 							});
-						</script>
+						  
+							container.addEventListener('mouseleave', function() {
+							  img1.style.opacity = 1;
+							  img2.style.opacity = 0;
+							  setTimeout(function() {
+								if (img1.style.opacity == 0) {
+								  crossfade.src = newSrc;
+								} else {
+								  crossfade.src = originalSrc;
+								}
+							  }, 250);
+							});
+						  </script>
 					</div>
+
+
+
+
+				
+					<!-- Bruixola  -->
+					<div class='center-screen' id="compasss">
+							<img src="images/compass.png" height="100px" width="100px" id="fotocompass">
+							<script>
+									var imagen = document.getElementById('fotocompass');
+									const container1 = document.getElementById('mirar');
+
+									container1.addEventListener('mousemove', function(event) {
+			
+									var x = event.clientX - imagen.offsetLeft - imagen.offsetWidth/2;
+									var y = event.clientY - imagen.offsetTop - imagen.offsetHeight/2;
+
+									var angulo = Math.atan2(y, x) * 180 / Math.PI;
+	
+									imagen.style.transform = 'rotate(' + angulo + 'deg)';
+									});
+							</script>
+					</div>
+
 					<div class="testimonials">
 						<section>
 							<div class="content">
@@ -244,7 +288,6 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/bike.js"></script>
 			<script src="assets/js/main.js"></script>
-		
 
 	</body>
 </html>
