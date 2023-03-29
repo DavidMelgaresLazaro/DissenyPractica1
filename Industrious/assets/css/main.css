@@ -2970,3 +2970,21 @@ body.is-menu-visible #menu {
 .image6:hover img {
   filter: grayscale(80%);
 }
+
+.container {
+  position: relative;
+  width: 1000px;
+  height: 1000px;
+}
+.img1, .img2 {
+  position: absolute;
+  object-fit: cover;
+}
+.img2 {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.crossfade {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
