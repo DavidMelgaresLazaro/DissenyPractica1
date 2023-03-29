@@ -1,26 +1,36 @@
-var posx = 100;
+// Obtenemos la imagen
+var imagen = document.getElementById("pngwing.com.png");
 
-var bike = document.querySelector("#bici");
+// Definimos variables para la posición actual y la posición objetivo
+var posicionActual = 0;
+var posicionObjetivo = 0;
 
+// Definimos una constante para el factor de suavizado
+const factorSuavizado = 0.1;
 
-function posicion(event) {
-    posx=event.clientX;
-	bike.style.left =posx + 'px';
-    bike.style.transform = 'rotate(' + graus + 'deg)';
-    requestAnimationFrame(moure);
-}
+// Obtenemos el ancho de la ventana
+var anchoVentana = window.innerWidth;
 
+// Función que se ejecuta cuando se mueve el ratón
+document.onmousemove = function(e) {
+    // Obtenemos la posición X del ratón
+    posicionObjetivo = e.pageX;
+};
 
+// Función para animar la posición de la imagen
+function animarImagen() {
+    // Calculamos la nueva posición actual con suavizado
+    posicionActual += (posicionObjetivo - posicionActual) * factorSuavizado;
 
-function moure() {
-    var pos = 0;
-    
-    var pos = bike.getBoundingClientRect();
+    // Si la imagen llega al final de la página, la hacemos dar la vuelta
+    if (posicionActual > anchoVentana) {
+        posicionActual = 0;
+    }
 
-    var posxbike= pos.left + pos.width / 2;
+    // Actualizamos la posición X de la imagen
+    imagen.style.left = posicionActual + "px";
 
-	bike.style.left= posx + 'px';
-    bike.style.transform = 'rotate(' + graus + 'deg)';
-	requestAnimationFrame(moure);
+    // Solicitamos el siguiente fotograma de animación
+    requestAnimationFrame(animarImagen);
 }
 
