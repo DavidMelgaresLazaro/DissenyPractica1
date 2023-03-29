@@ -2828,9 +2828,32 @@ body.is-menu-visible #menu {
   align-items: center;
   text-align: center;
 }
+
+
 #bici{
   position:absolute;
   transform: scale(1, 1);
   transition: transform 0.5s linear;
 }
+
+
+.container {
+  position: relative;
+  width: 1000px;
+  height: 1000px;
+}
+.img1, .img2 {
+  position: absolute;
+  object-fit: cover;
+}
+.img2 {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.crossfade {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+
 
