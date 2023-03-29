@@ -2847,6 +2847,9 @@ body.is-menu-visible #menu {
   background-color: rgba(255, 0, 0, 0.3);
   padding: 50px;
 }
+#bici:hover {
+  cursor: w-resize;
+}
 
 
 /*image1*/
