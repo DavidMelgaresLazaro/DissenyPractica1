@@ -105,6 +105,27 @@
 						<h2>Pàrquings</h2>
 						<p>Actualment tens aquests pàrquings disponibles. Properament s'ampliara el número per arribar a tot el poble.</p>
 					</header>
+					
+
+
+				
+					<!-- Bruixola  -->
+					<div class='center-screen'>
+						<div id="compass">
+							<img src="images/compass.png" height="100px" width="100px" id="fotocompass">
+							<script>
+								var imagen = document.getElementById('fotocompass');
+							
+								window.addEventListener('mousemove', function(event) {
+								  var x = event.clientX - imagen.offsetLeft - imagen.offsetWidth/2;
+								  var y = event.clientY - imagen.offsetTop - imagen.offsetHeight/2;
+							
+								  var angulo = Math.atan2(y, x) * 180 / Math.PI;
+								  imagen.style.transform = 'rotate(' + angulo + 'deg)';
+								});
+							  </script>
+						</div>
+					</div>
 					<div class="center-screen">
 						<div class="container">
 							<img class="img1" src="images/mapabuit.png">
@@ -138,29 +159,6 @@
 							  }, 250);
 							});
 						  </script>
-					</div>
-
-
-
-
-				
-					<!-- Bruixola  -->
-					<div class='center-screen' id="compasss">
-							<img src="images/compass.png" height="100px" width="100px" id="fotocompass">
-							<script>
-									var imagen = document.getElementById('fotocompass');
-									const container1 = document.getElementById('mirar');
-
-									container1.addEventListener('mousemove', function(event) {
-			
-									var x = event.clientX - imagen.offsetLeft - imagen.offsetWidth/2;
-									var y = event.clientY - imagen.offsetTop - imagen.offsetHeight/2;
-
-									var angulo = Math.atan2(y, x) * 180 / Math.PI;
-	
-									imagen.style.transform = 'rotate(' + angulo + 'deg)';
-									});
-							</script>
 					</div>
 
 					<div class="testimonials">
