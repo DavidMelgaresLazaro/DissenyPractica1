@@ -1,0 +1,33 @@
+{extends index.html}
+<section id="main" class="wrapper">
+    <div class="inner">
+        <div class="content">
+            <header>
+                <h2>TITOL de la funcionalitat</h2>
+            </header>
+            <p>Descripció de la funcionalitat</p>
+            <p></p>
+            
+            <form action="fitxer.php" method = "POST">
+                <table>
+                    <tr>
+                        <td>Llistat:</td>
+                        <td>
+                            Codi PHP per generar el llistat
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Dada:</td>
+                        <td>
+                            <input type="text" name="nom" id="nom" value="" placeholder="Nom" />
+                        </td>
+                    </tr>
+        
+                </table>
+                <input type="submit" name="opcio" value="Funcionalitat" />	
+            </form>
+            <p></p>
+            <a href="./gestio.html">Tornar a la llista d'opcions</a>
+        </div>
+    </div>
+</section>
