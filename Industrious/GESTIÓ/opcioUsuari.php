@@ -24,7 +24,7 @@ if (isset($_POST["opcio"]))
 	$opcio = $_POST["opcio"];
 	switch ($opcio)
 	{
-		case "Agafar Bi":
+		case "Agafar Bicicleta":
 			//comprobem que es pot enlairar un avió
 			$c = new tcontrol();
 			$numAterrats = $c->totalAterrats();
@@ -41,7 +41,7 @@ if (isset($_POST["opcio"]))
 			
 			break;
 		
-		case "Aterrar":
+		case "Tornar Bicicleta":
 			// comprovem que es pot aterrar algún avió
 			$c = new tcontrol();
 			$numVolant = $c->totalVolant();
@@ -57,7 +57,7 @@ if (isset($_POST["opcio"]))
 			}
 			break;
 		
-		case "Volant":
+		case "Llistat bicis agafades":
 			include_once("llistatVolant.html");
 			break;
 
