@@ -1,33 +1,44 @@
-{extends index.html}
-<section id="main" class="wrapper">
-    <div class="inner">
-        <div class="content">
-            <header>
-                <h2>TITOL de la funcionalitat</h2>
-            </header>
-            <p>Descripció de la funcionalitat</p>
-            <p></p>
-            
-            <form action="fitxer.php" method = "POST">
-                <table>
-                    <tr>
-                        <td>Llistat:</td>
-                        <td>
-                            Codi PHP per generar el llistat
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Dada:</td>
-                        <td>
-                            <input type="text" name="nom" id="nom" value="" placeholder="Nom" />
-                        </td>
-                    </tr>
-        
-                </table>
-                <input type="submit" name="opcio" value="Funcionalitat" />	
-            </form>
-            <p></p>
-            <a href="./gestio.html">Tornar a la llista d'opcions</a>
-        </div>
-    </div>
-</section>
+<!-- Main -->
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+    <body class="is-preload">
+        <section id="main" class="wrapper">
+            <div class="inner">
+                <div class="content">
+                    <header>
+                        <h2>BENVINGUT AL SERVEI DE BICING</h2>
+                    </header>
+                    <p>Desde aquí podras agafar i deixar bicicletes,així com consultar l'estat dels diferents pàrquings del sistema de Bicing de Lleida</p>
+                    <p></p>
+                    <form action="opcioUsuari.php" method = "POST">
+                        <table>
+                            <tr>
+                                <td>Llistat:</td>
+                                <td>
+                                    Codi PHP per generar el llistat
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Dada:</td>
+                                <td>
+                                    <input type="text" name="nom" id="nom" value="" placeholder="Nom" />
+                                </td>
+                            </tr>
+                
+                        </table>
+                        <input type="submit" name="opcio" value="Funcionalitat" />	
+                    </form>
+                    <p></p>
+                    <a href="./gestio.html">Tornar a la llista d'opcions</a>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
