@@ -1,52 +1,74 @@
 <?php
-    require_once('TAccessbd.php');
-    require_once('TCiutada.php');
-    require_once('TParquing.php');
-    require_once('TBicicleta.php');
+header("Content-Type: text/html;charset=utf-8");
 
-    class TControl {
-        private $accessbd;
+//Classe de CONTROLADOR
+include_once ("TBicicleta.php");
+include_once ("TCiutada.php");
+include_once ("TParquing.php");
 
-        public function __construct() {
-            $this->accessbd = new TAccessbd();
-        }
 
-        public function mostrarMensaje($mensaje) {
-            echo "<p>$mensaje</p>";
-        }
 
-        // Métodos para la opción "Agafar bicicleta"
-        public function obtenirCiutadansSenseBicicleta() {
-            $ciutada = new TCiutada($this->accessbd);
-            return $ciutada->obtenirCiutadansSenseBicicleta();
-        }
 
-        public function obtenirParquingsAmbBicicletes() {
-            $parquing = new TParquing($this->accessbd);
-            return $parquing->obtenirParquingsAmbBicicletes();
-        }
 
-        // Métodos para la opción "Tornar una bicicleta"
-        public function obtenirCiutadansAmbBicicleta() {
-            $ciutada = new TCiutada($this->accessbd);
-            return $ciutada->obtenirCiutadansAmbBicicleta();
-        }
+class TControl
+{
+	private $servidor;
+	private $usuari;
+	private $paraula_pas;
+	private $nom_bd;
+	function __construct()
+	{
+		$this->servidor = "localhost";
+		$this->usuari = "root";
+		$this->paraula_pas = "usbw";
+		$this->nom_bd = "bicing";
+	}
 
-        public function obtenirParquingsNoPlens() {
-            $parquing = new TParquing($this->accessbd);
-            return $parquing->obtenirParquingsNoPlens();
-        }
+	////////////// Mètodes per a muntar llistes desplegables als fitxers HTML i comprovacions de VISTA
+	
+	public function llistaParquings()
+	{
+		$res = 0;
+		$ae = new TParquing("","",0,$this->servidor, $this->usuari, $this->paraula_pas, $this->nom_bd);	
+		$res = $ae->llistaParquings();
+		return $res;
+	}
+	
+	
+	////////// Mètodes per a realitzar les opcions de menú
+	
+	public function agafar($idBicicleta)
+	{
+		$res = 0;
+		$av = new TBicicleta ($idBicicleta,"","","", $this->servidor, $this->usuari, $this->paraula_pas, $this->nom_bd);
+		$res = $av->agafar();
+		return $res;
+	}
 
-        // Métodos para la opción "Llistat de bicicletes agafades"
-        public function obtenirBicicletesAgafades() {
-            $bicicleta = new TBicicleta($this->accessbd);
-            return $bicicleta->obtenirBicicletesAgafades();
-        }
+	public function tornar($idBicicleta, $idParquing)
+	{
+		$res = 0;
+		$av = new TBicicleta($idBicicleta,"","",$idParquing, $this->servidor, $this->usuari, $this->paraula_pas, $this->nom_bd);
+		$res = $av->tornar();
+		return $res;
+	}
 
-        // Métodos para la opción "Llistat de bicicletes a un pàrquing"
-        public function obtenirBicicletesParquing($parquingId) {
-            $parquing = new TParquing($this->accessbd);
-            return $parquing->obtenirBicicletesParquing($parquingId);
-        }
-    }
-?>
+	public function llistatAgafades ()
+	{
+		$res = 0;
+		$ae = new TBicicleta ("","","","", $this->servidor, $this->usuari, $this->paraula_pas, $this->nom_bd);
+		$res = $ae->llistatAgafades();
+		return $res;
+	}
+
+	public function llistatBicisParquing ($parquing)
+	{
+		$res = 0;
+		$ae = new TAvio ("","","",$parquing, $this->servidor, $this->usuari, $this->paraula_pas, $this->nom_bd);
+		$res = $ae->llistatBicisParquing();
+		return $res;
+	}
+
+/////////////////////////////////////////
+
+}

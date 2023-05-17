@@ -1,54 +1,43 @@
-<!-- Main -->
+<!DOCTYPE HTML>
 
 <html>
 	<head>
+		<title>GESTIÓ BICICLETES</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
 	</head>
-    <body class="is-preload">
-        <section id="main" class="wrapper">
-            <div class="inner">
-                <div class="content">
-                    <header>
-                        <h2>BENVINGUT AL SERVEI DE BICING</h2>
-                    </header>
-                    <p>Desde aquí podras agafar i deixar bicicletes,així com consultar l'estat dels diferents pàrquings del sistema de Bicing de Lleida</p>
-                    <p></p>
-                    <form action="opcioUsuari.php" method = "POST">
-                        <table>
-                            <tr>
-                                <td>Llistat:</td>
-                                <td>
-                                    <form action="opcioUsuari.php" method = "POST">
-                                        <input type="radio" id="radio1" name="opcio" checked value="agafar" /><label for="radio1">Agafar</label><br>
-                                        <input type="radio" id="radio2" name="opcio" value="tornar" /><label for="radio2">Tornar</label>	<br>
-                                        <input type="radio" id="radio3" name="opcio" value="llistatAgafades" /><label for="radio3">Llistat Agafades</label><br>
-                                        <input type="radio" id="radio4" name="opcio" value="llistatParquing" /><label for="radio4">Llistat de Parquings</label><br>
-                                        <br>
-                                        <br>
-                                        <hr>
-                                    </form>
-                                </td>
-                            </tr>
-                
-                        </table>
-                        <input type="submit" name="opcio" value="Tria opció" />	
-                    </form>
-                    <p></p>
-                    <a href="./gestio.html">Tornar a la llista d'opcions</a>
-                </div>
-            </div>
-        </section>
-
-    <!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/bike.js"></script>
-			<script src="assets/js/main.js"></script>
-        </body>
+	<body>
+		<h2>Agafar una Bici</h2>
+		<p></p>
+		<form action="gestiovista.php" method = "POST">
+			<table>
+				<tr>
+					<td>Bici a agafar:</td>
+					<td>
+						<?php
+						include_once("tcontrol.php");
+						//es crida a la funcionalitat que munta el llistat
+						$c = new tcontrol();
+						$res = $c->llistaAvionsVolant(); //idAvio, tipus, numPassatgers
+						echo ($res);
+						?>
+					</td>
+				</tr>
+				<tr>
+					<td>Parquing</td>
+					<td>
+						<?php
+						include_once("tcontrol.php");
+						//es crida a la funcionalitat que munta el llistat
+						$c = new tcontrol();
+						$res = $c->llistaAeroports(); //nomAeroport, Ciutat, npistes
+						echo ($res);
+						?>
+					</td>
+				</tr>	
+			</table>
+			<input type="submit" name = "opcio" value="Aterrar" />	
+		</form>
+		<p></p>
+		
+	</body>
 </html>
