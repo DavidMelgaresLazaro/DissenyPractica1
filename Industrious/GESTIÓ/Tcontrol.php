@@ -64,7 +64,7 @@ class TControl
 	public function llistatBicisParquing ($parquing)
 	{
 		$res = 0;
-		$ae = new TAvio ("","","",$parquing, $this->servidor, $this->usuari, $this->paraula_pas, $this->nom_bd);
+		$ae = new TBicicleta ("","","",$parquing, $this->servidor, $this->usuari, $this->paraula_pas, $this->nom_bd);
 		$res = $ae->llistatBicisParquing();
 		return $res;
 	}

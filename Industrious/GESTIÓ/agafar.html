@@ -15,9 +15,8 @@
 					<td>
 						<?php
 						include_once("tcontrol.php");
-						//es crida a la funcionalitat que munta el llistat
 						$c = new tcontrol();
-						$res = $c->llistaAvionsVolant(); //idAvio, tipus, numPassatgers
+						$res = $c->llistaBicisParquing();
 						echo ($res);
 						?>
 					</td>
@@ -29,7 +28,7 @@
 						include_once("tcontrol.php");
 						//es crida a la funcionalitat que munta el llistat
 						$c = new tcontrol();
-						$res = $c->llistaAeroports(); //nomAeroport, Ciutat, npistes
+						$res = $c->llistaParquings();
 						echo ($res);
 						?>
 					</td>
