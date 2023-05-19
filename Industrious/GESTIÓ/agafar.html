@@ -1,42 +1,49 @@
-<!DOCTYPE HTML>
-
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>GESTIÓ BICICLETES</title>
-		<meta charset="utf-8" />
-	</head>
-	<body>
-		<h2>Agafar una Bici</h2>
-		<p></p>
-		<form action="gestiovista.php" method = "POST">
-			<table>
-				<tr>
-					<td>Bici a agafar:</td>
-					<td>
-						<?php
-						include_once("tcontrol.php");
-						$c = new tcontrol();
-						$res = $c->llistaBicisParquing();
-						echo ($res);
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td>Parquing</td>
-					<td>
-						<?php
-						include_once("tcontrol.php");
-						//es crida a la funcionalitat que munta el llistat
-						$c = new tcontrol();
-						$res = $c->llistaParquings();
-						echo ($res);
-						?>
-					</td>
-				</tr>	
-			</table>
-			<input type="submit" name = "opcio" value="Aterrar" />	
-		</form>
-		<p></p>
-		
-	</body>
+<head>
+    <title>Agafar Bicicleta</title>
+</head>
+<body>
+    <h1>Agafar Bicicleta</h1>
+
+    <h2>Lista de Ciutadans</h2>
+    <ul>
+        <li>Ciutadà 1</li>
+        <li>Ciutadà 2</li>
+        <li>Ciutadà 3</li>
+        <!-- Agrega más ciutadans si es necesario -->
+    </ul>
+
+    <h2>Lista de Pàrquings amb Bicicletes</h2>
+    <ul>
+        <li>Pàrquing 1</li>
+        <li>Pàrquing 2</li>
+        <li>Pàrquing 3</li>
+        <!-- Agrega más pàrquings si es necesario -->
+    </ul>
+
+    <form action="agafar.php" method="post">
+        <label for="ciutada">Ciutadà:</label>
+        <select name="ciutada" id="ciutada">
+            <option value="ciutada1">Ciutadà 1</option>
+            <option value="ciutada2">Ciutadà 2</option>
+            <option value="ciutada3">Ciutadà 3</option>
+            <!-- Agrega más opciones de ciutadans si es necesario -->
+        </select>
+
+        <br><br>
+
+        <label for="parquing">Pàrquing:</label>
+        <select name="parquing" id="parquing">
+            <option value="parquing1">Pàrquing 1</option>
+            <option value="parquing2">Pàrquing 2</option>
+            <option value="parquing3">Pàrquing 3</option>
+            <!-- Agrega más opciones de pàrquings si es necesario -->
+        </select>
+
+        <br><br>
+
+        <input type="submit" value="Agafar Bicicleta">
+    </form>
+</body>
 </html>
