@@ -1,99 +1,74 @@
 <?php
-// Classe TControl
-class TControl {
-    // Mètode per mostrar missatges o errors
-    public function mostrarMissatge($missatge) {
-        // Codi per mostrar el missatge
-        echo $missatge;
-    }
+header("Content-Type: text/html;charset=utf-8");
+include_once("tcontrol.php");
 
-    // Mètode per gestionar l'opció "agafar"
-    public function agafar() {
-        // Codi per gestionar l'opció "agafar"
-        echo "Has seleccionat l'opció agafar.";
-    }
 
-    // Mètode per gestionar l'opció "tornar"
-    public function tornar() {
-        if (isset($_POST["idBicicleta"]) && isset($_POST["aeroport"]) )
+
+// Aquí van les opcions de menú que necessiten demanar a l'usuari alguna dada addicional 
+if (isset($_POST["opcio"]))
+{
+	$opcio = $_POST["opcio"];
+	switch ($opcio)
+	{
+		case "agafar":
+		{
+			if (isset($_POST["id"]) )
 			{
-				$id = $_POST["idAvio"];
-				$aero = $_POST["aeroport"];
-				$c = new tcontrol();
-				$res = $c->aterrar($id, $aero);
+				$id = $_POST["id"];
+				$c = new tcontrol();	
+				$res = $c->agafar($id);
 				if ($res)
 				{
-					mostrarMissatge("Avió aterrat correctament a l'aeroport");
+					mostrarMissatge("Bicicleta agafada correctament.");
 				}
 				else
 				{
-					mostrarError("Error en aterrar l'avió");
+					mostrarError("Error al agafar la bicicleta");
 				}
 			}
 			break;
-    }
+		}
 
-    // Mètode per generar el llistat de bicicletes agafades
-    public function generarLlistatAgafades() {
-        if (isset($_POST["Agafades"]))
+		case "tornar":
+		{
+			if (isset($_POST["id"]) && isset($_POST["parquing"]) )
 			{
-				$Agafades = $_POST["Agafades"];
+				$id = $_POST["id"];
+				$parquing = $_POST["parquing"];
+				$c = new tcontrol();
+				$res = $c->aterrar($id, $parquing);
+				if ($res)
+				{
+					mostrarMissatge("Bicicleta deixada correctament.");
+				}
+				else
+				{
+					mostrarError("Error al deixar la bicicleta.");
+				}
+			}
+			break;
+		}
+
+		case "llistatParquings":
+		{
+			if (isset($_POST["parquing"]))
+			{
+				$parquing = $_POST["parquing"];
 				$c = new TControl();
-				$res = $c->llistatAvionsAeroport($Agafades);
+				$res = $c->llistatBicisParquing($parquing);
 				if ($res)
 				{
 					mostrarMissatge($res);
 				}
 				else
 				{
-					mostrarError("Error en generar la llista d'avions aterrats a $Agafades");
+					mostrarError("Error en generar la llista de bicicletas agafades a $parquing");
 				}
 			}
 			break;	
-    }
+		}
 
-    // Mètode per generar el llistat de pàrquings disponibles
-    public function generarLlistatParquings() {
-        if (isset($_POST["Disponibles"]))
-			{
-				$Disponibles = $_POST["Disponibles"];
-				$c = new TControl();
-				$res = $c->llistatAvionsAeroport($Disponibles);
-				if ($res)
-				{
-					mostrarMissatge($res);
-				}
-				else
-				{
-					mostrarError("Error en generar la llista d'avions aterrats a $Disponibles");
-				}
-			}
-			break;	
-    }
+		default:
+			mostrarError("Error: opció incorrecta");
+	}
 }
-
-// Obté l'opció triada per l'usuari
-$opcioTriada = $_GET['opcio'];
-
-// Crea una instància de la classe TControl
-$control = new TControl();
-
-// Tracta l'opció triada
-switch ($opcioTriada) {
-    case 'agafar':
-        $control->agafar();
-        break;
-    case 'tornar':
-        $control->tornar();
-        break;
-    case 'llistatAgafades':
-        $control->generarLlistatAgafades();
-        break;
-    case 'llistatParquing':
-        $control->generarLlistatParquings();
-        break;
-    default:
-        $control->mostrarMissatge("Opció no vàlida");
-        break;
-}
-?>

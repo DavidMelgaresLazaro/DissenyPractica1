@@ -1,31 +1,60 @@
 <?php
-    // Connectar a la base de dades
-    require_once('TControl.php');
-    $tc = new TControl();
+header("Content-Type: text/html;charset=utf-8");
+include_once ("tcontrol.php");
 
-    // Comprovar l'opció triada per l'usuari
-    $opcio = $_POST['opcio'];
-    switch ($opcio) {
-        case 'agafar':
-            $ciutadans = $tc->obtenirCiutadansSenseBicicleta();
-            $parquings = $tc->obtenirParquingsAmbBicicletesDisponibles();
-            require_once('agafar.html');
-            break;
-        case 'tornar':
-            $ciutadans = $tc->obtenirCiutadansAmbBicicleta();
-            $parquings = $tc->obtenirParquingsNoPlens();
-            require_once('tornar.html');
-            break;
-        case 'llistatAgafades':
-            $bicicletes = $tc->obtenirBicicletesAgafades();
-            require_once('llistatAgafades.html');
-            break;
-        case 'llistatParquing':
-            $parquings = $tc->obtenirParquingsAmbBicicletes();
-            require_once('llistatParquing.html');
-            break;
-        default:
-            echo "<br>ERROR: Opció no disponible<br>";
-            break;
-    }
+
+
+//////////////////////////// CODI /////////////////////
+
+if (isset($_POST["opcio"]))
+{
+	$opcio = $_POST["opcio"];
+	switch ($opcio)
+	{
+		case "agafar":
+			//comprobem que es pot agadar un avió
+			$c = new tcontrol();
+			$numBicis = $c->totalAparcades();
+
+			//Si encara hi ha avions aterrats
+			if ($numBicis > 0)
+			{
+				include_once("agafar.html");
+			}
+			else
+			{
+				mostrarError("Totess les bicicletes estan agafades");
+			}
+			
+			break;
+		
+		case "deixar":
+			// comprovem que es pot agafar alguna bicicleta
+			$c = new tcontrol();
+			$numVolant = $c->totalVolant();
+			//si hi ha algún avió volant, es pot aterrar
+			if ($numVolant > 0)
+			{
+				include_once("aterrar.html");	
+			}
+			else
+			{
+				mostrarError("No hi ha cap avió volant");
+
+			}
+			break;
+		
+		case "Volant":
+			include_once("llistatVolant.html");
+			break;
+
+		case "Aterrats":
+			include_once("llistatAterrats.html");
+			break;
+				
+		default:
+			echo "<br>ERROR: Opció no disponible<br>";
+
+	}
+}
 ?>

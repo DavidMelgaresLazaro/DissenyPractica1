@@ -1,7 +1,7 @@
 <?php
 //Classe de MODEL encarregada de la gestió de la taula AVIO de la base de dades
 include_once ("taccesbd.php");
-class Tbicicleta
+class TBicicleta
 {
     private $id;
     private $kilometres;

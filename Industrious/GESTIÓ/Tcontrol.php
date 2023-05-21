@@ -37,18 +37,18 @@ class TControl
 	
 	////////// Mètodes per a realitzar les opcions de menú
 	
-	public function agafar($idBicicleta)
+	public function agafar($id)
 	{
 		$res = 0;
-		$av = new TBicicleta ($idBicicleta,"","","", $this->servidor, $this->usuari, $this->paraula_pas, $this->nom_bd);
+		$av = new TBicicleta ($id,"","","", $this->servidor, $this->usuari, $this->paraula_pas, $this->nom_bd);
 		$res = $av->agafar();
 		return $res;
 	}
 
-	public function tornar($idBicicleta, $idParquing)
+	public function tornar($id, $Parquing)
 	{
 		$res = 0;
-		$av = new TBicicleta($idBicicleta,"","",$idParquing, $this->servidor, $this->usuari, $this->paraula_pas, $this->nom_bd);
+		$av = new TBicicleta($id,"","",$Parquing, $this->servidor, $this->usuari, $this->paraula_pas, $this->nom_bd);
 		$res = $av->tornar();
 		return $res;
 	}

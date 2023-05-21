@@ -1,6 +1,6 @@
 <?php
     // Connectar a la base de dades
-    require_once('TControl.php');
+    require_once('tcontrol.php');
     $tc = new TControl();
 
     // Obtindre el llistat de párquings amb bicicletes disponibles
