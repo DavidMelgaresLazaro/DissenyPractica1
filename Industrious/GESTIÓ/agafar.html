@@ -8,13 +8,13 @@
 	<body>
 		<h2>Agafar una Bici</h2>
 		<p></p>
-		<form action="gestiovista.php" method = "POST">
+		<form action="gestioVista.php" method = "POST">
 			<table>
 				<tr>
 					<td>Bici a agafar:</td>
 					<td>
 						<?php
-						include_once("tcontrol.php");
+						include_once("Tcontrol.php");
 						$c = new tcontrol();
 						$res = $c->llistaBicisParquing();
 						echo ($res);
@@ -25,7 +25,7 @@
 					<td>Parquing</td>
 					<td>
 						<?php
-						include_once("tcontrol.php");
+						include_once("Tcontrol.php");
 						//es crida a la funcionalitat que munta el llistat
 						$c = new tcontrol();
 						$res = $c->llistaParquings();

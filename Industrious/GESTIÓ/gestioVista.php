@@ -9,25 +9,38 @@ class TControl {
 
     // Mètode per gestionar l'opció "agafar"
     public function agafar() {
-        // Codi per gestionar l'opció "agafar"
-        echo "Has seleccionat l'opció agafar.";
+        if (isset($_POST["idBicicleta"]) )
+			{
+				$id = $_POST["idBicicleta"];
+				$c = new tcontrol();	
+				$res = $c->enlairar($id);
+				if ($res)
+				{
+					mostrarMissatge("Bicicleta agafada!");
+				}
+				else
+				{
+					mostrarError("Error en agafarBicicleta");
+				}
+			}
+			break;
     }
 
     // Mètode per gestionar l'opció "tornar"
     public function tornar() {
-        if (isset($_POST["idBicicleta"]) && isset($_POST["aeroport"]) )
+        if (isset($_POST["idBicicleta"]) && isset($_POST["Parquing"]) )
 			{
-				$id = $_POST["idAvio"];
-				$aero = $_POST["aeroport"];
-				$c = new tcontrol();
-				$res = $c->aterrar($id, $aero);
+				$id = $_POST["idBicicleta"];
+				$parquing = $_POST["Parquing"];
+				$c = new TControl();
+				$res = $c->aterrar($id, $parquing);
 				if ($res)
 				{
-					mostrarMissatge("Avió aterrat correctament a l'aeroport");
+					mostrarMissatge("Bicicleta retornada correctement");
 				}
 				else
 				{
-					mostrarError("Error en aterrar l'avió");
+					mostrarError("Error en retornar");
 				}
 			}
 			break;

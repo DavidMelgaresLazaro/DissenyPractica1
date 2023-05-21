@@ -24,6 +24,8 @@ class TControl
 		$this->nom_bd = "bicing";
 	}
 
+    
+
 	////////////// Mètodes per a muntar llistes desplegables als fitxers HTML i comprovacions de VISTA
 	
 	public function llistaParquings()
@@ -68,7 +70,5 @@ class TControl
 		$res = $ae->llistatBicisParquing();
 		return $res;
 	}
-
-/////////////////////////////////////////
 
 }
