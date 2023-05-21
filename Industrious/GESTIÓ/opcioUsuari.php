@@ -1,21 +1,8 @@
 <?php
 header("Content-Type: text/html;charset=utf-8");
-include_once ("TControl.php");
-
-function mostrarError ($missatge)
-{
-	include_once("missatgeCap.html");
-	echo "$missatge";
-	include_once("missatgePeu.html");
-}
+include_once ("tcontrol.php");
 
 
-function mostrarMissatge ($missatge)
-{
-	include_once("missatgeCap.html");
-	echo "$missatge";
-	include_once("missatgePeu.html");
-}
 
 //////////////////////////// CODI /////////////////////
 
@@ -24,31 +11,31 @@ if (isset($_POST["opcio"]))
 	$opcio = $_POST["opcio"];
 	switch ($opcio)
 	{
-		case "Agafar":
-			//comprobem que es pot enlairar un avió
-			$c = new TControl();
-			$numAgafades = $c->llistatAgafades();
+		case "agafar":
+			//comprobem que es pot agadar un avió
+			$c = new tcontrol();
+			$numBicis = $c->totalAparcades();
 
 			//Si encara hi ha avions aterrats
-			if ($numAterrats > 0)
+			if ($numBicis > 0)
 			{
 				include_once("agafar.html");
 			}
 			else
 			{
-				mostrarError("Totes les bicis s'han agafat");
+				mostrarError("Totess les bicicletes estan agafades");
 			}
 			
 			break;
 		
-		case "Tornar":
-			// comprovem que es pot aterrar algún avió
-			$c = new TControl();
-			$numAgafades = $c->totalAgafades();
+		case "deixar":
+			// comprovem que es pot agafar alguna bicicleta
+			$c = new tcontrol();
+			$numVolant = $c->totalVolant();
 			//si hi ha algún avió volant, es pot aterrar
 			if ($numVolant > 0)
 			{
-				include_once("tornar.html");	
+				include_once("aterrar.html");	
 			}
 			else
 			{

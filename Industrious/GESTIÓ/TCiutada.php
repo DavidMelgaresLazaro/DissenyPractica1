@@ -1,5 +1,5 @@
 <?php
-    class TBicicleta {
+    class TCiutada {
         private $accessbd;
 
         public function __construct($accessbd) {
