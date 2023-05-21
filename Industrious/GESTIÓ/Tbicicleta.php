@@ -14,7 +14,7 @@ class TBicicleta
         $this->kilometres = $v_kilometres;
         $this->DNICiutada = $v_DNICiutada;
         $this->idParquing = $v_idParquing;
-        $var_abd = new TAccesbd($servidor,$usuari,$paraula_pas,$nom_bd);
+        $var_abd = new taccesbd($servidor,$usuari,$paraula_pas,$nom_bd);
         $this->abd = $var_abd;
         $this->abd->connectar_BD();
     }

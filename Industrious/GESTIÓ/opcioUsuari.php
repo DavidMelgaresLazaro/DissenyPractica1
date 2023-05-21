@@ -27,6 +27,7 @@ if (isset($_POST["opcio"]))
 			break;
 		
 		case "deixar":
+			print(deixar);
 			// comprovem que es pot agafar alguna bicicleta
 			$c = new tcontrol();
 			$numVolant = $c->totalVolant();
