@@ -2,13 +2,14 @@
 //Classe de MODEL especialitzada en l'accés a la base de dades.
 //Centralitza totes les peticions de sentències SQL de les altres
 //classes de MODEL
-class TAccesbd
+class taccesbd
 {
     //Aquestes quatre propietats privades guarden les dades de connexió a la base de dades
-    private $bd;
     private $host;
-    private $user;
-    private $pass;
+    private $port;
+    private $username;
+    private $password;
+    private $database;
     //La pròpia classe de gestió de la base de dades guarda els
     //objectes necessaris per realitzar aquesta gestió.
     //Així, des del programa extern que la faci servir, no cal
@@ -22,12 +23,14 @@ class TAccesbd
     //Constructor de la classe. Serveix per poder crear objectes de la
     //classe. Li hem d'indicar les dades de connexió
     
-    function __construct($host , $user , $pass, $bd)
+    function __construct($host , $port,$username , $password, $database)
     {
-        $this->bd = $bd;
-        $this->host = $host;
-        $this->user = $user;
-        $this->pass = $pass;
+        $this->host = $host ;
+		$this->port = $port;
+		$this->username = $username;
+		$this->password = $password;
+		$this->database = $database; 
+
     }
     
     //Realitza la connexió a la base de dades, amb les dades de
@@ -35,8 +38,7 @@ class TAccesbd
     public function connectar_BD()
     {
         $res = true;
-        $this->connexio = mysqli_connect ($this->host, $this->user,
-        $this->pass, $this->bd);
+        $this->connexio = mysqli_connect ($this->host,$this->username,$this->password,$this->database,$this->port);
         mysqli_set_charset($this->connexio,"utf8");
         if (!$this->connexio)
         {

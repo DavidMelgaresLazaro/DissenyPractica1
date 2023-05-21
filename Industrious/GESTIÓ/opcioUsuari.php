@@ -1,10 +1,8 @@
 <?php
 header("Content-Type: text/html;charset=utf-8");
-include_once ("tcontrol.php");
+include_once ("Tcontrol.php");
 
 
-
-//////////////////////////// CODI /////////////////////
 
 if (isset($_POST["opcio"]))
 {
@@ -13,8 +11,8 @@ if (isset($_POST["opcio"]))
 	{
 		case "agafar":
 			//comprobem que es pot agadar un avió
-			$c = new tcontrol();
-			$numBicis = $c->totalAparcades();
+			$c = new Tcontrol();
+			$numBicis = $c->llistatAgafades();
 
 			//Si encara hi ha avions aterrats
 			if ($numBicis > 0)
@@ -58,3 +56,4 @@ if (isset($_POST["opcio"]))
 	}
 }
 ?>
+

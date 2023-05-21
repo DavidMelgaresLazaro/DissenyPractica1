@@ -8,7 +8,7 @@ class TBicicleta
     private $DNICiutada;
     private $idParquing;
     private $abd;
-    function __construct($v_id, $v_kilometres, $v_DNICiutada, $v_idParquing, $servidor, $usuari, $paraula_pas, $nom_bd)
+    function __construct($v_id, $v_kilometres, $v_DNICiutada, $v_idParquing,$host,$username,$password,$database,$port)
     {
         $this->id = $v_id;
         $this->kilometres = $v_kilometres;
