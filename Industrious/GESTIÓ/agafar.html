@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 <!DOCTYPE HTML>
 <!--
 	Industrious by TEMPLATED
@@ -24,19 +17,22 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="index.html"><img src="../images/logo2.jpg"></a>
+				<a class="logo" href="../index.html"><img src="../images/logo1.jpg"></a>
 				<nav>
 					<a href="#menu">Menu</a>
 				</nav>
 			</header>
 
 		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="../index.html">Inici</a></li>
-
-				</ul>
-			</nav>
+		<nav id="menu">
+			<ul class="links">
+				<li><a href=#banner>Inici</a></li>
+				<li><a href="#desc">Descripció</a></li>
+				<li><a href="#cta">Normes</a></li>
+				<li><a href="#parking">Pàrkings</a></li>
+				<li><a href="GESTIÓ/gestió.html">Disponibilitat</a></li>
+			</ul>
+		</nav>
 
 		<!-- Heading -->
 			<section id="heading">
@@ -51,37 +47,36 @@
 				<div class="inner">
 					<div class="content">
 						<header>
-							<h2>TITOL de la funcionalitat</h2>
+							<h2>Agafar Bicicleta</h2>
 						</header>
-						<p>Descripció de la funcionalitat</p>
+						<p>Un usuari que no te cap bicicleta, n'agafa una dels parquings que en tenen.</p>
 						<p></p>
 						
-						<form action="agafar.php" method = "POST">
+						<form action="fitxer.php" method = "POST">
 							<table>
 								<tr>
-									<td>Llistat:</td>
+									<td>Usuari:</td>
 									<td>
 										<?php
-										include_once("tcontrol.php");
-										// es crida a la funcionalitat que munta el llistat
+										include_once("Tcontrol.php");
 										$c = new tcontrol();
-										$res = $c->llistaAvionsAterrats(); //idAvio, numPassatgers i aeroport on està
+										$res = $c->llistatUsuarisFree();
 										echo ($res);
 										?>
 									</td>
 								</tr>
 								<tr>
-									<td>Dada:</td>
+									<td>Pàrquing</td>
 									<td>
-										<input type="text" name="nom" id="nom" value="" placeholder="Nom" />
+										
 									</td>
 								</tr>
 					
 							</table>
-							<input type="submit" name="opcio" value="Funcionalitat" />	
+							<input type="submit" name="opcio" value="Agafar" />	
 						</form>
 						<p></p>
-						<a href="./gestio.html">Tornar a la llista d'opcions</a>
+						<a href="gestió.html">Tornar a la llista d'opcions</a>
 					</div>
 				</div>
 			</section>
@@ -127,51 +122,5 @@
 			<script src="../assets/js/main.js"></script>
 			<script src="../assets/js/dai.js"></script>
 
-	</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html>
-	<head>
-		<title>GESTIÓ BICICLETAS</title>
-		<meta charset="utf-8" />
-	</head>
-	<body>
-		<h2>AGAFAR UNA BICICLETA</h2>
-		<p></p>
-		<form action="gestioVista.php" method = "POST">
-			<table>
-				<tr>
-					<td>Avió a enlairar:</td>
-					<td>
-						<?php
-						include_once("tcontrol.php");
-						//es crida a la funcionalitat que munta el llistat
-						$c = new tcontrol();
-						$res = $c->llistaAgafades(); //id, DNICiutada i parquing on està
-						echo ($res);
-						?>
-					</td>
-				</tr>
-
-			</table>
-			<input type="submit" name="opcio" value="agafar" />	
-		</form>
-		<p></p>
 	</body>
 </html>
