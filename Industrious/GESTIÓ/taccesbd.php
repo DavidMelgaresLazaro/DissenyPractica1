@@ -81,6 +81,7 @@ class taccesbd
         if (mysqli_errno($this->connexio) != 0)
         {
             $res = false;
+            print(mysqli_errno($this->connexio));
         }
         else
         {

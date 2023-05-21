@@ -83,5 +83,13 @@ class TControl
 		$res = $ae->llistatBicisParquing();
 		return $res;
 	}
+	public function llistatUsuarisFree()
+	{
+		$res = 0;
+		$ae = new TCiutada ($this->host,$this->username,$this->password,$this->database,$this->port);
+		$res = $ae->llistatUsuarisFree();
+		return $res;
+
+	}
 
 }
