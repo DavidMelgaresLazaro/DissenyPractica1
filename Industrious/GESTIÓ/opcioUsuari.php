@@ -41,24 +41,24 @@ if (isset($_POST["opcio"]))
 			break;
 		
 		case "deixar":
-			print(deixar);
+			
 			// comprovem que es pot agafar alguna bicicleta
 			$c = new tcontrol();
-			$numVolant = $c->totalVolant();
+			$numBicis = $c->totalAparcades();
 			//si hi ha algún avió volant, es pot aterrar
-			if ($numVolant > 0)
+			if ($numBicis > 0)
 			{
-				include_once("aterrar.html");	
+				include_once("tornar.html");	
 			}
 			else
 			{
-				mostrarError("No hi ha cap avió volant");
+				mostrarError("No l'has pogut deixar");
 
 			}
 			break;
 		
 		case "Volant":
-			include_once("llistatVolant.html");
+			include_once("llistatAgafades.html");
 			break;
 
 		case "Aterrats":

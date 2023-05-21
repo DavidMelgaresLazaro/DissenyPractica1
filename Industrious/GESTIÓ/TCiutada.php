@@ -12,6 +12,16 @@
             return $resultat;
         }
 
+        function obtenerOpcionesCiutada() {
+            $query = "SELECT DNI, nom FROM ciutada";
+            $resultado = mysqli_query($conexion, $query);
+            $opciones = array();
+            while ($fila = mysqli_fetch_assoc($resultado)) {
+                $opciones[$fila['DNI']] = $fila['nom'];
+             }
+
+        }
+
         // Otros métodos relacionados con la gestión de bicicletas...
 
     }
