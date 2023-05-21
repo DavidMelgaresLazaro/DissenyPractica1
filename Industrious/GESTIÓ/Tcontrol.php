@@ -12,24 +12,35 @@ include_once ("TParquing.php");
 class TControl
 {
 	private $host;
-	private $port;
 	private $username;
 	private $password;
+	private $port;
 	private $database;	
 
 	function __construct()
 	{
 		$this->host = "localhost";
-		$this->port = 8888;
-		$this->username = 'root';
-		$this->password = '';
-		$this->database = 'bicing'; 
+		$this->username = "root";
+		$this->port = "8888";
+		$this->password = "root";
+		$this->database = "bicing"; 
 	}
 
     
 
 	////////////// Mètodes per a muntar llistes desplegables als fitxers HTML i comprovacions de VISTA
 	
+
+
+
+	public function totalAparcades()
+	{
+		$res = 0;
+		$av = new TBicicleta ("","","","", $this->host,$this->username,$this->password,$this->database,$this->port);
+		$res = $av->totalAparcades();
+        return $res;
+	}
+
 	public function llistaParquings()
 	{
 		$res = 0;
@@ -61,7 +72,7 @@ class TControl
 	{
 		$res = 0;
 		$ae = new TBicicleta ("","","","",$this->host,$this->username,$this->password,$this->database,$this->port);
-		$res = $ae->llistatAgafades();
+		$res = $ae->totalOcupades();
 		return $res;
 	}
 

@@ -14,9 +14,10 @@ class TBicicleta
         $this->kilometres = $v_kilometres;
         $this->DNICiutada = $v_DNICiutada;
         $this->idParquing = $v_idParquing;
-        $var_abd = new taccesbd($servidor,$usuari,$paraula_pas,$nom_bd);
+        $var_abd = new taccesbd($host,$username,$password,$database,$port);
         $this->abd = $var_abd;
         $this->abd->connectar_BD();
+
     }
 
     function __destruct()
@@ -30,7 +31,7 @@ class TBicicleta
     public function totalAparcades()
 	{
 		$res = 0;
-        $sql = "select count(*) as quants from bicicleta where parquing is not null";
+        $sql = "select count(*) as quants from bicicleta where idParquing is not null";
 	
         if ($this->abd->consulta_SQL($sql) )
         {

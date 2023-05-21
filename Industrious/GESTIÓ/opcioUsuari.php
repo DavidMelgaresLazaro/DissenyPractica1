@@ -3,7 +3,22 @@ header("Content-Type: text/html;charset=utf-8");
 include_once ("Tcontrol.php");
 
 
+function mostrarError ($missatge)
+	{
+		include_once("missatgeCap.html");
+		echo "$missatge";
+		include_once("missatgePeu.html");
+	}
 
+
+	function mostrarMissatge ($missatge)
+	{
+		include_once("missatgeCap.html");
+		echo "$missatge";
+		include_once("missatgePeu.html");
+	}
+
+	
 if (isset($_POST["opcio"]))
 {
 	$opcio = $_POST["opcio"];
@@ -12,8 +27,7 @@ if (isset($_POST["opcio"]))
 		case "agafar":
 			//comprobem que es pot agadar un avió
 			$c = new Tcontrol();
-			$numBicis = $c->llistatAgafades();
-
+			$numBicis = $c->totalAparcades();
 			//Si encara hi ha avions aterrats
 			if ($numBicis > 0)
 			{

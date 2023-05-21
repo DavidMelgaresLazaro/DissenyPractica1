@@ -6,10 +6,10 @@ class taccesbd
 {
     //Aquestes quatre propietats privades guarden les dades de connexió a la base de dades
     private $host;
-    private $port;
     private $username;
     private $password;
     private $database;
+    private $port;
     //La pròpia classe de gestió de la base de dades guarda els
     //objectes necessaris per realitzar aquesta gestió.
     //Així, des del programa extern que la faci servir, no cal
@@ -23,13 +23,13 @@ class taccesbd
     //Constructor de la classe. Serveix per poder crear objectes de la
     //classe. Li hem d'indicar les dades de connexió
     
-    function __construct($host , $port,$username , $password, $database)
+    function __construct($host, $username , $password, $database,$port)
     {
         $this->host = $host ;
-		$this->port = $port;
 		$this->username = $username;
 		$this->password = $password;
 		$this->database = $database; 
+        $this->port = $port;
 
     }
     
