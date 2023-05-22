@@ -59,7 +59,7 @@
 									<td>
 										<?php
 										include_once("Tcontrol.php");
-										$c = new tcontrol();
+										$c = new Tcontrol();
 										$res = $c->llistatUsuarisFree();
 										echo ($res);
 										?>
@@ -68,7 +68,12 @@
 								<tr>
 									<td>Pàrquing</td>
 									<td>
-										
+										<?php
+										include_once("Tcontrol.php");
+										$c = new Tcontrol();
+										$res = $c->llistatParquingAmbBicis();
+										echo ($res);
+										?>
 									</td>
 								</tr>
 					

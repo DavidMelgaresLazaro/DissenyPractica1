@@ -8,13 +8,13 @@ class Tparquing
     private $maxBicis;
     private $numBicis;
     private $abd;
-    function __construct($v_id, $v_adresa, $v_maxBicis,$v_numBicis, $servidor, $usuari, $paraula_pas, $nom_bd)
+    function __construct($v_id, $v_adresa, $v_maxBicis,$v_numBicis, $host,$username,$password,$database,$port)
     {
         $this->id = $v_id;
         $this->adresa = $v_adresa;
         $this->maxBicis = $v_maxBicis;
         $this->numBicis = $v_numBicis;
-        $var_abd = new TAccesbd($servidor,$usuari,$paraula_pas,$nom_bd);
+        $var_abd = new taccesbd($host,$username,$password,$database,$port);
         $this->abd = $var_abd;
         $this->abd->connectar_BD();
     }
@@ -25,6 +25,12 @@ class Tparquing
         {
         unset($this->abd);
         }
+    }
+
+    public function ParquingsAmbBicis()
+    {
+        $res = 0;
+        $res = $this->llistaParquings("SELECT adresa,id,numBicis,maxBicis FROM parquing WHERE numBicis > 0;")
     }
 
     public function llistaParquings()
