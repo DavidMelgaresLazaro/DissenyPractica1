@@ -36,7 +36,7 @@ if (isset($_POST["opcio"]))
 				$id = $_POST["id"];
 				$parquing = $_POST["parquing"];
 				$c = new tcontrol();
-				$res = $c->aterrar($id, $parquing);
+				$res = $c->tornar($id, $parquing);
 				if ($res)
 				{
 					mostrarMissatge("Bicicleta deixada correctament.");
