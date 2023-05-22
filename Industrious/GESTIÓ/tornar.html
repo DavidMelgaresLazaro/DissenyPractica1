@@ -1,9 +1,4 @@
-
 <!DOCTYPE HTML>
-
-
-
-
 <!--
 	Industrious by TEMPLATED
 	templated.co @templatedco
@@ -22,19 +17,22 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="index.html"><img src="../images/logo2.jpg"></a>
+				<a class="logo" href="../index.html"><img src="../images/logo1.jpg"></a>
 				<nav>
 					<a href="#menu">Menu</a>
 				</nav>
 			</header>
 
 		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="../index.html">Inici</a></li>
-
-				</ul>
-			</nav>
+		<nav id="menu">
+			<ul class="links">
+				<li><a href=#banner>Inici</a></li>
+				<li><a href="#desc">Descripció</a></li>
+				<li><a href="#cta">Normes</a></li>
+				<li><a href="#parking">Pàrkings</a></li>
+				<li><a href="GESTIÓ/gestió.html">Disponibilitat</a></li>
+			</ul>
+		</nav>
 
 		<!-- Heading -->
 			<section id="heading">
@@ -44,10 +42,6 @@
 					</div>
 			</section>
 
-            
-
-            
-
 		<!-- Main -->
 			<section id="main" class="wrapper">
 				<div class="inner">
@@ -55,35 +49,34 @@
 						<header>
 							<h2>TORNAR UNA BICICLETA</h2>
 						</header>
-						<p>Un usuari que TÉ una bicicleta la torna a d'un dels pàrquins que tenen lloc per tornar alguna bicicleta</p>
+						<p>Un usuari que TÉ una bicicleta la torna a d'un dels pàrquings que tenen lloc per tornar alguna bicicleta</p>
 						<p></p>
 						
-						<form action="tornar.php" method = "POST">
+						<form action="fitxer.php" method = "POST">
 							<table>
 								<tr>
 									<td>Usuari:</td>
-                                        <td>
-                                            <select name="ciutadaId" id="opciones1">
-                                                <?php foreach ($opciones as $dni => $nom): ?>
-                                                    <option value="<?php echo $dni; ?>"><?php echo $nom; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </td>
-                                    </td>
-                                    
+									<td>
+										<?php
+										include_once("Tcontrol.php");
+										$c = new tcontrol();
+										$res = $c->llistatUsuarisNotFree();
+										echo ($res);
+										?>
+									</td>
 								</tr>
 								<tr>
-									<td>Dada:</td>
+									<td>Pàrquing</td>
 									<td>
-										<input type="text" name="nom" id="nom" value="" placeholder="Nom" />
+										
 									</td>
 								</tr>
 					
 							</table>
-							<input type="submit" name="opcio" value="Funcionalitat" />	
+							<input type="submit" name="opcio" value="Agafar" />	
 						</form>
 						<p></p>
-						<a href="./gestio.html">Tornar a la llista d'opcions</a>
+						<a href="gestió.html">Tornar a la llista d'opcions</a>
 					</div>
 				</div>
 			</section>
@@ -121,7 +114,6 @@
 			</div>
 		</footer>
 
-
 		<!-- Scripts -->
 			<script src="../assets/js/jquery.min.js"></script>
 			<script src="../assets/js/browser.min.js"></script>
@@ -132,11 +124,6 @@
 
 	</body>
 </html>
-
-
-
-
-
 
 
 

@@ -91,5 +91,16 @@ class TControl
 		return $res;
 
 	}
+	public function llistatUsuarisNotFree()
+	{
+		$res = 0;
+		$ae = new TCiutada ($this->host,$this->username,$this->password,$this->database,$this->port);
+		$res = $ae->llistatUsuarisNotFree();
+		return $res;
+
+
+	}
+
+	
 
 }

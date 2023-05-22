@@ -13,12 +13,23 @@
             $resultat = $this->accessbd->consulta($query);
             return $resultat;
         }
+
+        public function llistatUsuarisNotFree()
+        {
+            $res = 0;
+            $res = $this->llistaUsuaris("SELECT DNI,nom,telefon FROM ciutada WHERE DNI in ( SELECT DNICiutada FROM bicicleta where DNICiutada is not null) ");            
+            return $res;
+        }
+
+
         public function llistatUsuarisFree()
         {
             $res = 0;
             $res = $this->llistaUsuaris("SELECT DNI,nom,telefon FROM ciutada WHERE DNI not in ( SELECT DNICiutada FROM bicicleta where DNICiutada is not null) ");            
             return $res;
         }
+
+    
 
         public function llistaUsuaris($SQL)
         {
