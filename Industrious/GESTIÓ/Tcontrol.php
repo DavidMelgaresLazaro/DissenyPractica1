@@ -76,6 +76,14 @@ class TControl
 		return $res;
 	}
 
+	public function llistatParquingAmbBicis()
+	{
+		$res = 0;
+		$ae = new TParquing ("","","","",$this->host,$this->username,$this->password,$this->database,$this->port);
+		$res = $ae->ParquingsAmbBicis();
+		return $res;
+	}
+
 	public function llistatBicisParquing ($parquing)
 	{
 		$res = 0;
