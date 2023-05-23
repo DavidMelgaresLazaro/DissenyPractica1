@@ -9,8 +9,9 @@ include_once ("TParquing.php");
 
 
 
-class TControl
+class Tcontrol
 {
+
 	private $host;
 	private $username;
 	private $password;
@@ -44,7 +45,7 @@ class TControl
 	public function llistaParquings()
 	{
 		$res = 0;
-		$ae = new TParquing($this->host,$this->username,$this->password,$this->database,$this->port);	
+		$ae = new TParquing("","","","",$this->host,$this->username,$this->password,$this->database,$this->port);	
 		$res = $ae->llistaParquings();
 		return $res;
 	}
@@ -52,11 +53,11 @@ class TControl
 	
 	////////// Mètodes per a realitzar les opcions de menú
 	
-	public function agafar($id)
-	{
+	public function agafar($id,$DNI)
+	{	
 		$res = 0;
-		$av = new TBicicleta ($id,"","","", $this->host,$this->username,$this->password,$this->database,$this->port);
-		$res = $av->agafar();
+		$av = new TBicicleta ($id,"",$DNI,"", $this->host,$this->username,$this->password,$this->database,$this->port);
+		$res = $av->ocupar();
 		return $res;
 	}
 

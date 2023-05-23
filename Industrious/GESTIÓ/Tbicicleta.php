@@ -103,18 +103,30 @@ class TBicicleta
 
 
 
-    public function ocupar ()
+    public function ocupar()
 	{
-        
+
 		$res = false;
-        $sql = "update bicicleta set parquing = null where id = '$this->id'";
+        $sql = "update bicicleta set idParquing = NULL , DNICiutada = '$this->DNICiutada' WHERE id = '$this->id';";
         if ($this->abd->consulta_SQL($sql))
         {
-            $res = true;      
+            $res = true;
         }
+        $this->baixarNumParking();
     
         return $res;
 	}
+
+    public function baixarNumParking()
+    {
+        $res = false;
+        $sql = "UPDATE parquing SET numBicis = numBicis - 1 WHERE id = (SELECT idParquing FROM bicicleta WHERE id = '$this->id');";
+        if ($this->abd->consulta_SQL($sql))
+        {
+            $res = true;
+        }
+
+    }
 
 	function deixar ()
 	{
@@ -134,17 +146,17 @@ class TBicicleta
         {   
             $fila = $this->abd->consulta_fila();
             $res =  "<table border=1><tr bgcolor='lightgray'>
-                        <th>idAvio</th><th>Tipus</th><th>nPass</th>
+                        <th>id</th><th>adresa</th><th>DNICiutada</th>
                     </tr> ";
             while ($fila != null)
             {
-                $idAvio = $this->abd->consulta_dada('id');
-                $tipus = $this->abd->consulta_dada('idParquing');
-                $nPass = $this->abd->consulta_dada('DNICiutada');
+                $id = $this->abd->consulta_dada('id');
+                $adresa= $this->abd->consulta_dada('adresa');
+                $DNICiutada = $this->abd->consulta_dada('DNICiutada');
    
                 $res = $res . "<tr>";
                 $res = $res . "<td>$id</td>";
-                $res = $res . "<td>$idParquing</td>";
+                $res = $res . "<td>$adresa</td>";
                 $res = $res . "<td align='right'>$DNICiutada</td>";
                 $res = $res . "</tr>";
                 $fila = $this->abd->consulta_fila();
@@ -182,20 +194,20 @@ class TBicicleta
             $maxBicis = $this->abd->consulta_dada('maxBicis');
             $numBicis = $this->abd->consulta_dada('numBicis');
             $res = $this->escriuCapsalera ($id, $adresa, $maxBicis);
-            $sql = "select id, idParquing, DNICiutada from bicicleta where parquing = '$this->parquing'";
+            $sql = "select id, adresa, DNICiutada from bicicleta where parquing = '$this->parquing'";
             if ($this->abd->consulta_SQL($sql))
             {   
                 $fila = $this->abd->consulta_fila();
-                $res = $res . "<table border=1><tr bgcolor='lightblue'><th>ID Bicicleta</th><th>ID Parquing</th><th>DNI Ciutada</th></tr> ";
+                $res = $res . "<table border=1><tr bgcolor='lightblue'><th>ID Bicicleta</th><th>adresa</th><th>DNI Ciutada</th></tr> ";
                 while ($fila != null)
                 {
-                    $idAvio = $this->abd->consulta_dada('id');
-                    $tipus = $this->abd->consulta_dada('idParquing');
-                    $npass = $this->abd->consulta_dada('DNICiutada');
+                    $id = $this->abd->consulta_dada('id');
+                    $adresa = $this->abd->consulta_dada('adresa');
+                    $DNICiutada = $this->abd->consulta_dada('DNICiutada');
                     
                     $res = $res . "<tr>";
                     $res = $res . "<td align='center'> $id </td>";
-                    $res = $res . "<td align='center'> $idParquing </td>";
+                    $res = $res . "<td align='center'> $adresa </td>";
                     $res = $res . "<td align='center'> $DNICiutada </td>";
                     $res = $res ."</tr>";
                              

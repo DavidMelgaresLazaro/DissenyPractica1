@@ -1,7 +1,7 @@
 <?php
 //Classe de MODEL encarregada de la gestió de la taula PARQUING de la base de dades
 include_once ("taccesbd.php");
-class Tparquing
+class TParquing
 {
     private $id;
     private $adresa;
@@ -30,23 +30,27 @@ class Tparquing
     public function ParquingsAmbBicis()
     {
         $res = 0;
-        $res = $this->llistaParquings("SELECT adresa,id,numBicis,maxBicis FROM parquing WHERE numBicis > 0;")
+        $res = $this->llistaParquings("SELECT id,adresa,maxBicis,numBicis FROM parquing WHERE numBicis > 0;");
+
+        return $res;
     }
 
     public function llistaParquings()
     {
         $res = false;
-        if ($this->abd->consulta_SQL("select id, adresa from parquing order by id"))
+        if ($this->abd->consulta_SQL("SELECT id, adresa, numBicis, maxBicis FROM parquing ORDER BY id"))
         {   
             $fila = $this->abd->consulta_fila();
-            $res =  "<select name='parquing'>";
+            $res =  "<select name='id'>";
             while ($fila != null)
             {
                 $id = $this->abd->consulta_dada('id');
                 $adresa = $this->abd->consulta_dada('adresa');
+                $maxBicis = $this->abd->consulta_dada('maxBicis');
+                $numBicis = $this->abd->consulta_dada('numBicis');
                             
-                $res = $res . "<option value='" . $fila["id"] . "'>".$fila["id"]." - " . $fila["adresa"]. "</option>";
-               
+                $res = $res . "<option value='" . $id . "'>";
+                $res = $res . "$id --> $adresa ( $numBicis disponibles de $maxBicis )  </option>";
                 $fila = $this->abd->consulta_fila();
             }
             $res = $res . "</select><br>";
@@ -58,8 +62,5 @@ class Tparquing
         }
         return $res; 
     }
-
-
-///////////////////////////////////////////////////
 
 }

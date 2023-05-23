@@ -1,8 +1,21 @@
 <?php
 header("Content-Type: text/html;charset=utf-8");
-include_once("tcontrol.php");
+include_once("Tcontrol.php");
+
+function mostrarError ($missatge)
+	{
+		include_once("missatgeCap.html");
+		echo "$missatge";
+		include_once("missatgePeu.html");
+	}
 
 
+	function mostrarMissatge ($missatge)
+	{
+		include_once("missatgeCap.html");
+		echo "$missatge";
+		include_once("missatgePeu.html");
+	}
 
 // Aquí van les opcions de menú que necessiten demanar a l'usuari alguna dada addicional 
 if (isset($_POST["opcio"]))
@@ -10,13 +23,14 @@ if (isset($_POST["opcio"]))
 	$opcio = $_POST["opcio"];
 	switch ($opcio)
 	{
-		case "agafar":
+		case "Agafar":
 		{
-			if (isset($_POST["id"]) )
+			if (isset($_POST["id"]) && isset($_POST["DNI"]))
 			{
 				$id = $_POST["id"];
-				$c = new tcontrol();	
-				$res = $c->agafar($id);
+				$DNI = $_POST["DNI"];
+				$c = new Tcontrol();
+				$res = $c->agafar($id,$DNI);
 				if ($res)
 				{
 					mostrarMissatge("Bicicleta agafada correctament.");
