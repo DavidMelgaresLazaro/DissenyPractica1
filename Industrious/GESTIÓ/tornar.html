@@ -68,12 +68,17 @@
 								<tr>
 									<td>Pàrquing</td>
 									<td>
-										
+										<?php
+										include_once("Tcontrol.php");
+										$c = new Tcontrol();
+										$res = $c->llistatParquingAmbDeixarBicis();
+										echo ($res);
+										?>
 									</td>
 								</tr>
 					
 							</table>
-							<input type="submit" name="opcio" value="Agafar" />	
+							<input type="submit" name="opcio" value="Tornar" />	
 						</form>
 						<p></p>
 						<a href="gestió.html">Tornar a la llista d'opcions</a>

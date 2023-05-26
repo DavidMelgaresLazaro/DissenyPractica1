@@ -34,33 +34,43 @@ class TParquing
 
         return $res;
     }
-
-    public function llistaParquings()
+    public function ParquingsAmbDeixarBicis()
     {
-        $res = false;
-        if ($this->abd->consulta_SQL("SELECT id, adresa, numBicis, maxBicis FROM parquing ORDER BY id"))
-        {   
-            $fila = $this->abd->consulta_fila();
-            $res =  "<select name='id'>";
-            while ($fila != null)
-            {
-                $id = $this->abd->consulta_dada('id');
-                $adresa = $this->abd->consulta_dada('adresa');
-                $maxBicis = $this->abd->consulta_dada('maxBicis');
-                $numBicis = $this->abd->consulta_dada('numBicis');
-                            
-                $res = $res . "<option value='" . $id . "'>";
-                $res = $res . "$id --> $adresa ( $numBicis disponibles de $maxBicis )  </option>";
-                $fila = $this->abd->consulta_fila();
-            }
-            $res = $res . "</select><br>";
-            $this->abd->tancar_consulta();
-        }
-        else
-        {
-            $res = "<select name='parquing'></select><br>";
-        }
-        return $res; 
+        $res = 0;
+        $res = $this->llistaParquings("SELECT id,adresa,maxBicis,numBicis FROM parquing WHERE numBicis < maxBicis;");
+
+        return $res;
     }
+
+    public function llistaParquings($query)
+{
+    $res = false;
+    if ($this->abd->consulta_SQL($query))
+    {
+        $res = "<select name='id'>";
+        while ($fila = $this->abd->consulta_fila())
+        {
+            $id = $fila['id'];
+            $adresa = $fila['adresa'];
+            $maxBicis = $fila['maxBicis'];
+            $numBicis = $fila['numBicis'];
+                        
+            $res .= "<option value='" . $id . "'>";
+            $res .= "$id --> $adresa ($numBicis disponibles de $maxBicis)</option>";
+        }
+        $res .= "</select><br>";
+        $this->abd->tancar_consulta();
+    }
+    else
+    {
+        $res = "<select name='id'></select><br>";
+    }
+    return $res; 
+}
+
+
+
+
+    
 
 }

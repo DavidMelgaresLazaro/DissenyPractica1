@@ -2,7 +2,7 @@
 header("Content-Type: text/html;charset=utf-8");
 
 //Classe de CONTROLADOR
-include_once ("TBicicleta.php");
+include_once ("Tbicicleta.php");
 include_once ("TCiutada.php");
 include_once ("TParquing.php");
 
@@ -65,7 +65,7 @@ class Tcontrol
 	{
 		$res = 0;
 		$av = new TBicicleta($id,"","",$Parquing,$this->host,$this->username,$this->password,$this->database,$this->port);
-		$res = $av->tornar();
+		$res = $av->deixar();
 		return $res;
 	}
 
@@ -82,6 +82,13 @@ class Tcontrol
 		$res = 0;
 		$ae = new TParquing ("","","","",$this->host,$this->username,$this->password,$this->database,$this->port);
 		$res = $ae->ParquingsAmbBicis();
+		return $res;
+	}
+	public function llistatParquingAmbDeixarBicis()
+	{
+		$res = 0;
+		$ae = new TParquing ("","","","",$this->host,$this->username,$this->password,$this->database,$this->port);
+		$res = $ae->ParquingsAmbDeixarBicis();
 		return $res;
 	}
 
