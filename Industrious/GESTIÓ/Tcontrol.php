@@ -37,7 +37,7 @@ class Tcontrol
 	public function totalAparcades()
 	{
 		$res = 0;
-		$av = new TBicicleta ("","","","", $this->host,$this->username,$this->password,$this->database,$this->port);
+		$av = new Tbicicleta ("","","","", $this->host,$this->username,$this->password,$this->database,$this->port);
 		$res = $av->totalAparcades();
         return $res;
 	}
@@ -56,7 +56,7 @@ class Tcontrol
 	public function agafar($id,$DNI)
 	{	
 		$res = 0;
-		$av = new TBicicleta ($id,"",$DNI,"", $this->host,$this->username,$this->password,$this->database,$this->port);
+		$av = new Tbicicleta ($id,"",$DNI,"", $this->host,$this->username,$this->password,$this->database,$this->port);
 		$res = $av->ocupar();
 		return $res;
 	}
@@ -64,7 +64,7 @@ class Tcontrol
 	public function tornar($id, $Parquing)
 	{
 		$res = 0;
-		$av = new TBicicleta($id,"","",$Parquing,$this->host,$this->username,$this->password,$this->database,$this->port);
+		$av = new Tbicicleta($id,"","",$Parquing,$this->host,$this->username,$this->password,$this->database,$this->port);
 		$res = $av->deixar();
 		return $res;
 	}
@@ -72,7 +72,7 @@ class Tcontrol
 	public function llistatAgafades ()
 	{
 		$res = 0;
-		$ae = new TBicicleta ("","","","",$this->host,$this->username,$this->password,$this->database,$this->port);
+		$ae = new Tbicicleta ("","","","",$this->host,$this->username,$this->password,$this->database,$this->port);
 		$res = $ae->totalOcupades();
 		return $res;
 	}
@@ -95,7 +95,7 @@ class Tcontrol
 	public function llistatBicisParquing ($parquing)
 	{
 		$res = 0;
-		$ae = new TBicicleta ("","","",$this->host,$this->username,$this->password,$this->database,$this->port);
+		$ae = new Tbicicleta ("","","",$this->host,$this->username,$this->password,$this->database,$this->port);
 		$res = $ae->llistatBicisParquing();
 		return $res;
 	}

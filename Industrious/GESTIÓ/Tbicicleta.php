@@ -131,13 +131,26 @@ class TBicicleta
 	function deixar ()
 	{
         $res = false;
-        $sql = "update bicicleta set parquing = '$this->parquing' where id = '$this->id'";
+        $sql = "update bicicleta set idParquing = NULL , DNICiutada = '$this->DNICiutada' WHERE idParquing = '$this->id' LIMIT 1;";
         if ($this->abd->consulta_SQL($sql))
         {
-            $res = true;       
+            $res = true;
         }
+        $this->pujarNumParking();
+    
         return $res;
 	}
+
+    public function pujarNumParking()
+    {
+        $res = false;
+        $sql = "UPDATE parquing SET numBicis = numBicis + 1 WHERE id = '$this->id';";
+        if ($this->abd->consulta_SQL($sql))
+        {
+            $res = true;
+        }
+
+    }
 
     public function llistatOcupades()
     {

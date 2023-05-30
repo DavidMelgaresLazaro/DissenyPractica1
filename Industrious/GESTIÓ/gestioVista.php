@@ -40,17 +40,20 @@ if (isset($_POST["opcio"]))
 					mostrarError("Error al agafar la bicicleta");
 				}
 			}
+			
 			break;
 		}
 
-		case "tornar":
+		case "Tornar":
 		{
-			if (isset($_POST["id"]) && isset($_POST["parquing"]) )
+			
+			if (isset($_POST["id"]) && isset($_POST["DNI"]) )
 			{
+				
 				$id = $_POST["id"];
-				$parquing = $_POST["parquing"];
-				$c = new tcontrol();
-				$res = $c->tornar($id, $parquing);
+				$DNI = $_POST["DNI"];
+				$c = new Tcontrol();
+				$res = $c->tornar($id, $DNI);
 				if ($res)
 				{
 					mostrarMissatge("Bicicleta deixada correctament.");
@@ -60,6 +63,7 @@ if (isset($_POST["opcio"]))
 					mostrarError("Error al deixar la bicicleta.");
 				}
 			}
+			
 			break;
 		}
 

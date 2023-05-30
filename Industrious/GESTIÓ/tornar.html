@@ -52,14 +52,14 @@
 						<p>Un usuari que TÉ una bicicleta la torna a d'un dels pàrquings que tenen lloc per tornar alguna bicicleta</p>
 						<p></p>
 						
-						<form action="fitxer.php" method = "POST">
+						<form action="gestioVista.php" method = "POST">
 							<table>
 								<tr>
 									<td>Usuari:</td>
 									<td>
 										<?php
 										include_once("Tcontrol.php");
-										$c = new tcontrol();
+										$c = new Tcontrol();
 										$res = $c->llistatUsuarisNotFree();
 										echo ($res);
 										?>
