@@ -107,7 +107,7 @@ class TBicicleta
 	{
 
 		$res = false;
-        $sql = "update bicicleta set idParquing = NULL , DNICiutada = '$this->DNICiutada' WHERE id = '$this->id';";
+        $sql = "update bicicleta set idParquing = NULL , DNICiutada = '$this->DNICiutada' WHERE idParquing = '$this->id' LIMIT 1;";
         if ($this->abd->consulta_SQL($sql))
         {
             $res = true;
@@ -120,7 +120,7 @@ class TBicicleta
     public function baixarNumParking()
     {
         $res = false;
-        $sql = "UPDATE parquing SET numBicis = numBicis - 1 WHERE id = (SELECT idParquing FROM bicicleta WHERE id = '$this->id');";
+        $sql = "UPDATE parquing SET numBicis = numBicis - 1 WHERE id = '$this->id';";
         if ($this->abd->consulta_SQL($sql))
         {
             $res = true;

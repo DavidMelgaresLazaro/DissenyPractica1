@@ -35,10 +35,10 @@ class TParquing
         return $res;
     }
 
-    public function llistaParquings()
+    public function llistaParquings($consulta_SQL)
     {
         $res = false;
-        if ($this->abd->consulta_SQL("SELECT id, adresa, numBicis, maxBicis FROM parquing ORDER BY id"))
+        if ($this->abd->consulta_SQL($consulta_SQL))
         {   
             $fila = $this->abd->consulta_fila();
             $res =  "<select name='id'>";
@@ -49,8 +49,8 @@ class TParquing
                 $maxBicis = $this->abd->consulta_dada('maxBicis');
                 $numBicis = $this->abd->consulta_dada('numBicis');
                             
-                $res = $res . "<option value='" . $id . "'>";
-                $res = $res . "$id --> $adresa ( $numBicis disponibles de $maxBicis )  </option>";
+                // $res = $res . "<option value='" . $id . "'>";
+                $res = $res . "<option value='" . $id . "'> $id --> $adresa ( $numBicis disponibles de $maxBicis )  </option>";
                 $fila = $this->abd->consulta_fila();
             }
             $res = $res . "</select><br>";

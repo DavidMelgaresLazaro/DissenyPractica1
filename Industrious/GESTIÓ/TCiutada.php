@@ -50,8 +50,7 @@
                         $nom = $this->abd->consulta_dada('nom'); 
                         $telefon = $this->abd->consulta_dada('telefon');
                         
-                        $res = $res . "<option value='" . $DNI . "'>";
-                        $res = $res . "DNI=$DNI - nom=$nom - telefon=$telefon  </option>";
+                        $res = $res . "<option value='" . $DNI . "'> DNI=$DNI - nom=$nom - telefon=$telefon  </option>";
                         $fila = $this->abd->consulta_fila();
                     }
                     $res = $res . "</select>";
