@@ -49,7 +49,7 @@ if (isset($_POST["opcio"]))
 			{
 				$id = $_POST["id"];
 				$parquing = $_POST["parquing"];
-				$c = new tcontrol();
+				$c = new Tcontrol();
 				$res = $c->tornar($id, $parquing);
 				if ($res)
 				{
@@ -62,6 +62,24 @@ if (isset($_POST["opcio"]))
 			}
 			break;
 		}
+
+		case "llistatAgafades":
+			{
+			
+				$parquing = $_POST["parquing"];
+				$c = new Tcontrol();
+				$res = $c->llistatOcupades($parquing);
+				if ($res)
+				{
+					mostrarMissatge($res);
+				}
+				else
+				{
+					mostrarError("Error en generar la llista de bicicletas agafades");
+				}
+				
+				break;	
+			}
 
 		case "llistatParquings":
 		{

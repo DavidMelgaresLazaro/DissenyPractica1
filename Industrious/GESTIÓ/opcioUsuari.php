@@ -57,8 +57,21 @@ if (isset($_POST["opcio"]))
 			}
 			break;
 		
-		case "Volant":
-			include_once("llistatAgafades.html");
+		case "llistatAgafades":
+
+			$c = new Tcontrol();
+			$numBicis = $c->totalAgafades();
+			print("numero:");
+			print($numBicis);
+			if ($numBicis > 0)
+			{
+				include_once("llistatAgafades.html");	
+			}
+			else
+			{
+				mostrarError("No s'ha pogut consultar");
+
+			}
 			break;
 
 		case "Aterrats":
