@@ -47,7 +47,7 @@ class TBicicleta
 	public function totalOcupades()
 	{
         $res = 0;
-		$sql = "select count(*) as quants from bicicleta where parquing is null";
+		$sql = "select count(*) as quants from bicicleta where idParquing is null;";
 		if ($this->abd->consulta_SQL($sql) )
         {
             if ($this->abd->consulta_fila())
@@ -60,7 +60,7 @@ class TBicicleta
 
     public function llistaBicicletesOcupades()
     {
-        $res = $this->llistaAvions("select id, idParquing, DNICiutada from bicicleta where parquing is null");
+        $res = $this->llistaAvions("select id, idParquing, DNICiutada from bicicleta where idParquing is null;");
         return $res;
     }
 
@@ -153,36 +153,39 @@ class TBicicleta
     }
 
     public function llistatOcupades()
-    {
-        $res = false;
-        if ($this->abd->consulta_SQL("select * from bicicleta where parquing is null"))
-        {   
-            $fila = $this->abd->consulta_fila();
-            $res =  "<table border=1><tr bgcolor='lightgray'>
-                        <th>id</th><th>adresa</th><th>DNICiutada</th>
-                    </tr> ";
-            while ($fila != null)
-            {
-                $id = $this->abd->consulta_dada('id');
-                $adresa= $this->abd->consulta_dada('adresa');
-                $DNICiutada = $this->abd->consulta_dada('DNICiutada');
-   
-                $res = $res . "<tr>";
-                $res = $res . "<td>$id</td>";
-                $res = $res . "<td>$adresa</td>";
-                $res = $res . "<td align='right'>$DNICiutada</td>";
-                $res = $res . "</tr>";
-                $fila = $this->abd->consulta_fila();
-            }
-            $res = $res . "</table>";
-            $this->abd->tancar_consulta();
-        }
-        else
+{
+    $res = false;
+    if ($this->abd->consulta_SQL("SELECT b.id, b.kilometres, b.DNICiutada, c.nom FROM bicicleta b JOIN ciutada c ON b.DNICiutada = c.DNI WHERE b.idParquing IS NULL;"))
+    {   
+        $fila = $this->abd->consulta_fila();
+        $res =  "<table border=1><tr bgcolor='lightgray'>
+                    <th>Id Bicicleta</th><th>Kilometres</th><th>DNICiutada</th><th>Nom Ciutadà</th>
+                </tr> ";
+        while ($fila != null)
         {
-            $res = "<h2>No s'ha pogut realitzar el llistat de bicicletes ocupades.</h2>";
+            $id = $this->abd->consulta_dada('id');
+            $kilometres = $this->abd->consulta_dada('kilometres');
+            $DNICiutada = $this->abd->consulta_dada('DNICiutada');
+            $nom = $this->abd->consulta_dada('nom');
+   
+            $res = $res . "<tr>";
+            $res = $res . "<td>$id</td>";
+            $res = $res . "<td>$kilometres</td>";
+            $res = $res . "<td>$DNICiutada</td>";
+            $res = $res . "<td align='right'>$nom</td>";
+            $res = $res . "</tr>";
+            $fila = $this->abd->consulta_fila();
         }
-        return $res; 
+        $res = $res . "</table>";
+        $this->abd->tancar_consulta();
     }
+    else
+    {
+        $res = "<h2>No s'ha pogut realitzar el llistat de bicicletes ocupades.</h2>";
+    }
+    return $res; 
+}
+
 
 
     private function escriuCapsalera ($id, $adresa, $maxBicis, $numBicis)
@@ -191,6 +194,10 @@ class TBicicleta
         $res = $res . "<h2>El parquing de ID:  $id situat a $adresa te un maxim de $maxBicis i hara mateix te un numero $numBicis bicicletes</h2><br>";
         return $res;
     }
+
+
+
+
 
 
     public function llistatBicletesParquing ()

@@ -72,6 +72,22 @@ class Tcontrol
 	public function llistatAgafades ()
 	{
 		$res = 0;
+		$ae = new TBicicleta ("","","","",$this->host,$this->username,$this->password,$this->database,$this->port);
+		$res = $ae->llistatOcupades();
+		return $res;
+	}
+
+	public function totalAgafades ()
+	{
+		$res = 0;
+		$ae = new TBicicleta ("","","","",$this->host,$this->username,$this->password,$this->database,$this->port);
+		$res = $ae->llistatOcupades();
+		return $res;
+	}
+
+	public function totalAgafades ()
+	{
+		$res = 0;
 		$ae = new Tbicicleta ("","","","",$this->host,$this->username,$this->password,$this->database,$this->port);
 		$res = $ae->totalOcupades();
 		return $res;
